@@ -31,13 +31,9 @@ pipeline{
                 }
                 stage("Test replaceString"){
                     steps{
-                        script{
-                            if ("index.html".count("%BUILD_NUMBER%") == 0) {
-                                echo "Successfully replaced string"
-                            }
-                            else {
-                                echo "FAILED"
-                            }
+                        sh """
+                            cat index.html | grep 'Deployed by Jenkins job: ${BUILD_NUMBER}'
+                        """
                         }
                     }
                 }
