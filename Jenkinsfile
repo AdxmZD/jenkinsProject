@@ -22,7 +22,7 @@ pipeline{
                 stage("Test on Windows"){
                     steps{
                         echo "Windows Test"
-                        test()
+                        sh "./test.sh"
                     }
                 }
                 stage("Test on Linux"){
