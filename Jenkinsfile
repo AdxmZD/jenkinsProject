@@ -11,14 +11,21 @@ pipeline{
                 echo "Build"
             }
         }
-        stage("Test"){
-            steps{
-                echo "Test"
+        parallel{
+            stage("Test on Windows"){
+                steps{
+                    echo "Windows Test"
+                }
             }
-        }
-        stage("Deploy"){
-            steps{
-            echo "Deploy"
+            stage("Test on Linux"){
+                steps{
+                    echo "Linux Test"
+                }
+            }
+            stage("Deploy"){
+                steps{
+                echo "Deploy"
+                }
             }
         }
         
