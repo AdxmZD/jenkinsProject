@@ -22,6 +22,7 @@ pipeline{
                 stage("Test on Windows"){
                     steps{
                         echo "Windows Test"
+                        test()
                     }
                 }
                 stage("Test on Linux"){
@@ -29,6 +30,7 @@ pipeline{
                         echo "Linux Test"
                     }
                 }
+        
                 // stage("Test replaceString"){
                 //     steps{
                 //         sh """
