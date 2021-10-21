@@ -11,6 +11,7 @@ pipeline{
                 echo "Build"
             }
         }
+        stage("Test"){
         parallel{
             stage("Test on Windows"){
                 steps{
@@ -22,13 +23,12 @@ pipeline{
                     echo "Linux Test"
                 }
             }
-            stage("Deploy"){
-                steps{
+        }
+        stage("Deploy"){
+            steps{
                 echo "Deploy"
-                }
             }
         }
-        
     }
 
     
