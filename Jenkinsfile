@@ -23,6 +23,7 @@ pipeline{
                 echo "Build"
                 printFromFunction()
                 replaceString()
+                hello()
             }
         }
         stage("Test"){
