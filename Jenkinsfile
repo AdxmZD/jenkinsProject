@@ -15,9 +15,6 @@ pipeline{
                 script{
                     utils.replaceString()
                 }
-                if ("index.html".count("%BUILD_NUMBER%") == 0) {
-                    echo "Successfully replaced string"
-                }
             }
         }
         stage("Test"){
@@ -30,6 +27,15 @@ pipeline{
                 stage("Test on Linux"){
                     steps{
                         echo "Linux Test"
+                    }
+                }
+                stage("Test replaceString"){
+                    steps{
+                        script{
+                            if ("index.html".count("%BUILD_NUMBER%") == 0) {
+                                echo "Successfully replaced string"
+                            }
+                        }
                     }
                 }
             }
