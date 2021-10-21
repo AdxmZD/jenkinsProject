@@ -14,6 +14,9 @@ pipeline{
                 printFromFunction()
                 replaceString()
                 helloVariable("Adam")
+                script{
+                    utils.printFromFunction()
+                }
             }
         }
         stage("Test"){
