@@ -6,20 +6,16 @@ pipeline{
     }
 
     stages{
-        stage("Build"){
+        stage("My first stage"){
             steps{
-                echo "Build"
+                echo "This is a step in my first stage"
             }
         }
-        stage("Test"){
+        stage("Print environment variables"){
             steps{
-                echo "Test"
+                sh 'printenv'
             }
         }
-        stage("Deploy"){
-            echo "Deploy"
-        }
-        
     }
 
     
