@@ -22,7 +22,7 @@ pipeline{
                 stage("Test on Windows"){
                     steps{
                         echo "Windows Test"
-                        sh "./test.sh"
+                        sh "./test.sh ${BUILD_NUMBER}"
                     }
                 }
                 stage("Test on Linux"){
