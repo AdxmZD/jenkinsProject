@@ -30,14 +30,6 @@ pipeline{
                         echo "Linux Test"
                     }
                 }
-        
-                // stage("Test replaceString"){
-                //     steps{
-                //         sh """
-                //             cat index.html | grep 'Deployed by Jenkins job: ${BUILD_NUMBER}'
-                //         """
-                //     }
-                // }
             }
         }    
         stage("Deploy"){
