@@ -7,11 +7,22 @@ pipeline{
         timestamps()
     }
 
+    environment{
+        buildNumber = "${BUILD_NUMBER}"
+        myEnvVar = "testenvvar"
+    }
+
+    parameters{
+        string(name: 'Name', defaultValue: 'Adam', descriptions: 'Your name')
+    }
+
     stages{
         stage("Build"){
             steps{
                 echo "Build"
                 helloVariable("Adam")
+                echo "${buildNumber}"
+                echo "${myEnvVar}"
                 script{
                     utils.replaceString()
                 }
