@@ -13,7 +13,15 @@ pipeline{
     }
 
     parameters{
-        string(name: 'Name', defaultValue: 'Adam', description: 'Your name')
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
 
     stages{
@@ -26,6 +34,20 @@ pipeline{
                 script{
                     utils.replaceString()
                 }
+            }
+        }
+        stage("Docker Build"){
+            agent{
+                docker{
+                    image "node:latest"
+                    args "-v ${WORKSPACE}/docker:/home/node"
+                }
+            }
+            steps{
+                sh """
+                node --version > /home/node/docker_node_version
+                npm --version > /home/node/docker_npm_version
+                """
             }
         }
         stage("Test"){
@@ -58,9 +80,9 @@ pipeline{
         always{
             archiveArtifacts artifacts: 'index.html', followSymlinks: false
         }
-        cleanup{
-            cleanWs()
-        }
+        // cleanup{
+        //     cleanWs()
+        // }
     }
     
 }
