@@ -47,6 +47,9 @@ pipeline{
         always{
             archiveArtifacts artifacts: 'index.html', followSymlinks: false
         }
+        cleanup{
+            cleanWs()
+        }
     }
     
 }
