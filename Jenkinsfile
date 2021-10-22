@@ -33,7 +33,9 @@ pipeline{
             }
         }    
         stage("Start first job"){
-            build '1_freestyle'
+            steps{
+                build '1_freestyle'
+            }
         }
         stage("Deploy"){
             steps{
