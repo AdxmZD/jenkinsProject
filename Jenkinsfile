@@ -33,6 +33,9 @@ pipeline{
                 echo "${myEnvVar}"
                 script{
                     utils.replaceString()
+                    sh """
+                        mkdir -p docker
+                    """
                 }
             }
         }
