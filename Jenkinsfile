@@ -13,7 +13,7 @@ pipeline{
     }
 
     parameters{
-        string(name: 'Name', defaultValue: 'Adam', descriptions: 'Your name')
+        string(name: 'Name', defaultValue: 'Adam', description: 'Your name')
     }
 
     stages{
